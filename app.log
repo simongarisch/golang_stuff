@@ -1,0 +1,20 @@
+2019/12/18 05:27:24 error: open configx.toml: The system cannot find the file specified.
+Can't open configuration file
+main.readConfig
+	C:/Users/simon.garisch/Desktop/git/golang_stuff/errors_package.go:22
+main.main
+	C:/Users/simon.garisch/Desktop/git/golang_stuff/errors_package.go:41
+runtime.main
+	c:/go/src/runtime/proc.go:203
+runtime.goexit
+	c:/go/src/runtime/asm_amd64.s:1357
+2019/12/18 05:31:36 error: open notafile.toml: The system cannot find the file specified.
+Can't open configuration file
+main.readConfig
+	C:/Users/simon.garisch/Desktop/git/golang_stuff/errors_package.go:18
+main.main
+	C:/Users/simon.garisch/Desktop/git/golang_stuff/errors_package.go:37
+runtime.main
+	c:/go/src/runtime/proc.go:203
+runtime.goexit
+	c:/go/src/runtime/asm_amd64.s:1357
