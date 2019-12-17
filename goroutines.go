@@ -1,9 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"net/http"
+	"sync"
+)
 
 func returnType(url string) {
-	resp, err := http.GEt(url)
+	resp, err := http.Get(url)
 	if err != nil {
 		fmt.Printf("error: %s\n", err)
 		return
@@ -18,6 +22,16 @@ func main() {
 	urls := []string{
 		"https://golang.org",
 		"https://api.github.com",
-		"https://httpbin.org.xml",
 	}
+
+	var wg sync.WaitGroup
+	for _, url := range urls {
+		wg.Add(1)
+		go func(url string) {
+			returnType(url)
+			wg.Done()
+		}(url)
+	}
+
+	wg.Wait()
 }
