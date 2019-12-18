@@ -1,7 +1,10 @@
 // with select we can work with several channels together
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func main() {
 	ch1, ch2 := make(chan int), make(chan int)
@@ -17,4 +20,17 @@ func main() {
 		fmt.Printf("got %d from ch2\n", val)
 	}
 
+	fmt.Println("-----")
+	out := make(chan float64)
+	go func() {
+		time.Sleep(100 * time.Millisecond)
+		out <- 3.14
+	}()
+
+	select {
+	case val := <-out:
+		fmt.Printf("got %f\n", val)
+	case <-time.After(200 * time.Millisecond):
+		fmt.Println("timeout")
+	}
 }
