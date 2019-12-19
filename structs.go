@@ -25,5 +25,8 @@ func main() {
 	}
 
 	fmt.Println("%+v\n", t2)
+	fmt.Println("---------")
 
+	t := new(Trade) // initializes all elements to zero
+	fmt.Println(t)  // &{ 0 0 false}
 }
