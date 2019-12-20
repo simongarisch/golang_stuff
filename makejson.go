@@ -51,10 +51,5 @@ func main() {
 	//fmt.Println(byteArr) // [123 34 97 ... a byte array
 
 	// now print this back to
-	newUser := make(map[string]string)
-	err = json.Unmarshal(byteArr, &newUser)
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println(newUser)
+	fmt.Println(string(byteArr))
 }
