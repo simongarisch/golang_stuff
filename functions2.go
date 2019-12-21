@@ -39,6 +39,17 @@ func getOperatingFunction(operation string) (func(int, int) int, error) {
 
 }
 
+// variable number of args to functions
+func getMax(vals ...int) int {
+	maxValue := vals[0]
+	for _, value := range vals {
+		if value > maxValue {
+			maxValue = value
+		}
+	}
+	return maxValue
+}
+
 func main() {
 	funcVar = incFn
 	fmt.Println(funcVar(1))        // 2
@@ -53,4 +64,10 @@ func main() {
 		panic(err)
 	}
 	fmt.Println(operatingFunction(10, 2)) // 8
+	fmt.Println("----------")
+
+	fmt.Println(getMax(1, 11, 2, 7)) // 11
+
+	myslice := []int{1, 11, 2, 7}
+	fmt.Println(getMax(myslice...)) // 11
 }
