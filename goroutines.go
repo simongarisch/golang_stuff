@@ -1,5 +1,7 @@
 package main
 
+// if the main goroutine ends, all other goroutines exit.
+
 import (
 	"fmt"
 	"net/http"
