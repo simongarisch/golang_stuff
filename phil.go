@@ -45,13 +45,17 @@ func (p *Philosopher) eat(host *Host, wg *sync.WaitGroup) {
 		sticks[0].Lock()
 		sticks[1].Lock()
 		fmt.Println("starting to eat " + p.name)
+		time.Sleep(100 * time.Millisecond)
 		p.turnsEating++
+		fmt.Println("finishing eating " + p.name)
 		sticks[0].Unlock()
 		sticks[1].Unlock()
 
-		if p.turnsEating == maxTurnsEating {
-			fmt.Println("finishing eating " + p.name)
-		}
+		/*
+			if p.turnsEating == maxTurnsEating {
+				fmt.Println("All done " + p.name)
+			}
+		*/
 	}
 	wg.Done()
 }
