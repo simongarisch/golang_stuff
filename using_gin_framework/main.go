@@ -7,10 +7,11 @@ import (
 )
 
 func main() {
-	// http://localhost:8080/
+	gin.SetMode(gin.ReleaseMode)
 	r := gin.Default() // router
 	r.LoadHTMLGlob("templates/*")
 
+	// http://localhost:8080/
 	r.GET("/", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": "root",
