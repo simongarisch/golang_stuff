@@ -8,6 +8,8 @@ function Greet (){
 
 // instead using the arrow function syntax
 // convention is to use the word 'props' for props
+
+/*
 const Greet = (props) => {
     console.log(props)
     return (
@@ -17,5 +19,18 @@ const Greet = (props) => {
         </div>
     )
 }
+*/
+
+
+const Greet = (props) => {  // destructuring name and followUp from props
+    const {name, followUp} = props
+    return (
+        <div>
+            <h1>Hello {name}! {followUp}</h1>
+            {props.children}
+        </div>
+    )
+}
+
 
 export default Greet
