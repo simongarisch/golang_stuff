@@ -23,6 +23,7 @@ import ParentComponent from './components/ParentComponent';
 import UserGreeting from './components/UserGreeting';
 import NameList from './components/NameList';
 import Stylesheets from './components/Stylesheets';
+import Form from './components/Form';
 
 // importing some style sheets
 import "./appStyles.css"
@@ -69,6 +70,10 @@ function App() {
 
       <h2 className="error">Error Test</h2>
       <h2 className={styles.success}>And success</h2>
+      <hr></hr>
+
+      <Form></Form>
+      <hr></hr>
     </div>
   );
 }
