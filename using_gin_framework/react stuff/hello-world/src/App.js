@@ -24,6 +24,9 @@ import UserGreeting from './components/UserGreeting';
 import NameList from './components/NameList';
 import Stylesheets from './components/Stylesheets';
 
+// importing some style sheets
+import "./appStyles.css"
+import styles from "./appStyles.module.css"
 
 function App() {
   return (
@@ -63,6 +66,9 @@ function App() {
 
       <Stylesheets primary={true}></Stylesheets>
       <hr></hr>
+
+      <h2 className="error">Error Test</h2>
+      <h2 className={styles.success}>And success</h2>
     </div>
   );
 }
