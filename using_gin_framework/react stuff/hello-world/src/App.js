@@ -29,6 +29,8 @@ import LifecycleA from './components/LifecycleA'
 // importing some style sheets
 import "./appStyles.css"
 import styles from "./appStyles.module.css"
+import FragmentDemo from './components/FragmentDemo';
+import PureCompon from './components/PureCompon';
 
 function App() {
   return (
@@ -79,6 +81,11 @@ function App() {
       <LifecycleA></LifecycleA>
       <hr></hr>
 
+      <FragmentDemo></FragmentDemo>
+      <hr></hr>
+
+      <PureCompon></PureCompon>
+      <hr></hr>
     </div>
   );
 }
