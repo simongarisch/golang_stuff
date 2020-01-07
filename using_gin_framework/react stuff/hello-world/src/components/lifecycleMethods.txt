@@ -1,0 +1,12 @@
+Lifecycle Methods
+
+https://reactjs.org/docs/state-and-lifecycle.html
+
+Mounting - When an instance of a component is being created and inserted into the DOM
+
+Updating - When a component is beind re-rendered as a resule of changes to either its props or state
+
+Unmounting - When a component is being removed from the DOM
+
+Error Handling - When there is an error during rendering, in a lifecycle method,
+                 or in the constructor of any child component.

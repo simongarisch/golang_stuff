@@ -24,6 +24,7 @@ import UserGreeting from './components/UserGreeting';
 import NameList from './components/NameList';
 import Stylesheets from './components/Stylesheets';
 import Form from './components/Form';
+import LifecycleA from './components/LifecycleA'
 
 // importing some style sheets
 import "./appStyles.css"
@@ -74,6 +75,10 @@ function App() {
 
       <Form></Form>
       <hr></hr>
+
+      <LifecycleA></LifecycleA>
+      <hr></hr>
+
     </div>
   );
 }
