@@ -31,6 +31,7 @@ import "./appStyles.css"
 import styles from "./appStyles.module.css"
 import FragmentDemo from './components/FragmentDemo';
 import PureCompon from './components/PureCompon';
+import ParentCompon from './components/ParentCompon'
 
 function App() {
   return (
@@ -85,6 +86,7 @@ function App() {
       <hr></hr>
 
       <PureCompon></PureCompon>
+      <ParentCompon></ParentCompon>
       <hr></hr>
     </div>
   );

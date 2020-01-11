@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 
 class ReguCompon extends Component {
     render() {
+        console.log("Regular Component Render")
         return (
             <div>
-                Regular Component
+                Regular Component {this.props.name}
             </div>
         )
     }
