@@ -23,7 +23,7 @@ class ParentCompon extends Component {
     }
 
     render() {
-        console.log("*** Parent Component Render ***")
+        //console.log("*** Parent Component Render ***")
         return (
             <div>
                 Parent Component
