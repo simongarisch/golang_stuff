@@ -1,0 +1,25 @@
+
+.board .row {
+  height: 25vh;
+}
+
+.board .col {
+  padding: 0px;
+}
+
+.square{
+  background-color: lightgrey;
+  border: 2px solid grey;
+  height: 25vh;
+  font-size: 32px;
+}
+
+.btn {
+  font-size: 50px;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
