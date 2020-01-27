@@ -7,15 +7,19 @@ class SearchBar extends Component {
     constructor(props) {
         super(props)
     
+        this.setSearchText = props.setSearchText
+
         this.state = {
              searchText: ""
         }
     }
     
     handleChange = (e) => {
+        const searchText = e.target.value
         this.setState({
-            searchText: e.target.value
+            searchText: searchText
         })
+        this.setSearchText(searchText)
     }
 
     render() {
