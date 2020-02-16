@@ -101,19 +101,27 @@
             </div>
         </div>
 
-        <div class="row row-content justify-content-center col-sm-8"> <!-- the reservtions form -->
-            <div class="card">
+        <!-- https://getbootstrap.com/docs/4.3/components/card/ -->
+        <!-- https://getbootstrap.com/docs/4.3/components/forms/#inline -->
+        <div class="row row-content justify-content-center"> <!-- the reservations form -->
+            <div class="card col-sm-8 px-0">
                 <div class="card-header bg-warning"><h2 class="text-white">Reserve a Table</h2></div>
-            </div>
-            <div class="card-body">
-                <form>
-                    <div class="form-group row">
-        
-                            <input type="radio"><label>1</label>
-                        </div>
 
-                    </div>
-                </form>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group row">
+                            <label for="guests" class="col-form-label col-sm-2">Number of Guests</label>
+                            <div class="col-10 col-sm">
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                <label class="form-check-label" for="inlineRadio1">1</label>
+                            </div>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
 
