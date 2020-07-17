@@ -2,7 +2,6 @@
 https://stackoverflow.com/questions/36857167/how-to-correctly-use-sync-cond
 https://github.com/golang/go/issues/20491
 */
-
 package main
 
 import (
