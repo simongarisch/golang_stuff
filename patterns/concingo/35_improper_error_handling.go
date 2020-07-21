@@ -1,3 +1,4 @@
+// go run 35_improper_error_handling.go
 package main
 
 import (
