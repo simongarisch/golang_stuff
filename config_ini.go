@@ -4,6 +4,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"reflect"
 
 	"gopkg.in/ini.v1"
 )
@@ -14,6 +15,7 @@ func main() {
 		fmt.Printf("Fail to read file: %v", err)
 		os.Exit(1)
 	}
+	fmt.Println(reflect.TypeOf(cfg))
 
 	// Classic read of values, default section can be represented as empty string
 	fmt.Println("App Mode:", cfg.Section("").Key("app_mode").String())
