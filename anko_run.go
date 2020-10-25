@@ -4,6 +4,8 @@ package main
 import (
 	"fmt"
 	"log"
+	"reflect"
+	"time"
 
 	"github.com/mattn/anko/env"
 	"github.com/mattn/anko/vm"
@@ -34,4 +36,12 @@ println(a.c) // 3
 	}
 
 	// output: Hello World :)
+	fmt.Println("------------")
+	time.Sleep(2 * time.Second)
+	fmt.Println(e)
+	fmt.Println("------------")
+	fmt.Println(reflect.TypeOf(e)) // *env.Env from github.com/mattn/anko/env
+	value, err := e.Get("a")
+	fmt.Println(value) // map[b:2 c:3 x:1]
+	fmt.Println(err)   // <nil>
 }
