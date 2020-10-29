@@ -1,4 +1,9 @@
 // go run util.go
+// there look to be a number of github projects devoted to go util functions.
+// https://github.com/subchen/go-stack
+// https://github.com/gxxgle/go-utils
+// https://github.com/zillow/godash
+// https://github.com/go-goodies/go_utils
 package main
 
 import (
