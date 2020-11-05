@@ -26,6 +26,12 @@ func (p ParentStruct) HasMethod(methodName string) bool {
 	return ok
 }
 
+func HasMethod(obj interface{}, methodName string) bool {
+	t := reflect.TypeOf(obj)
+	_, ok := t.MethodByName(methodName)
+	return ok
+}
+
 func main() {
 	p := ParentStruct{}
 	p.DoThis() // doing this...
@@ -38,4 +44,8 @@ func main() {
 	fmt.Println(p.HasMethod("DoThis")) // true
 	fmt.Println(p.HasMethod("DoThat")) // true
 	fmt.Println(p.HasMethod("DoThen")) // false
+
+	fmt.Println(HasMethod(p, "DoThis")) // true
+	fmt.Println(HasMethod(p, "DoThat")) // true
+	fmt.Println(HasMethod(p, "DoThen")) // false
 }
