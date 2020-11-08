@@ -1,5 +1,10 @@
 // go run logrus_example.go
 // https://github.com/sirupsen/logrus/issues/156
+// https://github.com/sirupsen/logrus/issues/483
+// https://stackoverflow.com/questions/52899535/using-logger-configs-in-multi-packages-best-practice-for-golang-productive
+// https://www.xspdf.com/resolution/52899535.html
+// https://www.loggly.com/blog/think-differently-about-what-to-log-in-go-best-practices-examined/
+// https://adeshinahassan.com/posts/designing-and-understanding-logging-system-in-go-application/
 package main
 
 import (
@@ -10,9 +15,9 @@ import (
 
 const logFile = "logrus.log"
 
+var logger = log.New() // create the logger
+
 func log2file() {
-	// create the logger
-	logger := log.New()
 	// with Json Formatter
 	logger.Formatter = &log.JSONFormatter{}
 	logger.SetOutput(os.Stdout)
@@ -21,12 +26,16 @@ func log2file() {
 	if err != nil {
 		logger.Fatal(err)
 	}
-	defer file.Close()
+	//defer file.Close()
 	logger.SetOutput(file)
 }
 
 func main() {
 	log2file()
+	logger.WithFields(log.Fields{
+		"animal": "walrus",
+	}).Info("A walrus appears")
+
 	logWithFields()
 	anotherExample()
 }
