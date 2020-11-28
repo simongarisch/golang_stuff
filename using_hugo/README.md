@@ -18,3 +18,6 @@ git submodule add https://github.com/vaga/hugo-theme-m10c.git themes/m10c.git th
 
 hugo server -D
 ```
+
+## Examples using hugo
+See the hugo [showcase](https://gohugo.io/showcase/)
