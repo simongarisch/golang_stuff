@@ -21,3 +21,4 @@ hugo server -D
 
 ## Examples using hugo
 See the hugo [showcase](https://gohugo.io/showcase/)
+And some [tutorials](https://www.youtube.com/watch?v=qtIqKaDlqXo&list=PLLAZ4kZ9dFpOnyRlyS-liKL5ReHDcj4G3)
