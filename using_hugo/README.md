@@ -22,3 +22,9 @@ hugo server -D
 ## Examples using hugo
 See the hugo [showcase](https://gohugo.io/showcase/)
 And some [tutorials](https://www.youtube.com/watch?v=qtIqKaDlqXo&list=PLLAZ4kZ9dFpOnyRlyS-liKL5ReHDcj4G3)
+
+
+# Nice themes
+https://themes.gohugo.io/theme/hugo-whisper-theme/
+https://themes.gohugo.io/docuapi/
+https://themes.gohugo.io/hugo-icarus/
