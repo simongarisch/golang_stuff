@@ -13,6 +13,7 @@ import (
 	"reflect"
 	"sort"
 	"strings"
+	"time"
 )
 
 // Round2dp rounds some input float to 2dp.
@@ -80,6 +81,41 @@ func CleanStruct(data interface{}) {
 	}
 }
 
+// GetSydneyTime gets the time in Sydney, Australia.
+func GetSydneyTime() (time.Time, error) {
+	currentTime := time.Now()
+	location, err := time.LoadLocation("Australia/Sydney")
+	if err != nil {
+		return currentTime, err
+	}
+
+	sydneyTime := currentTime.In(location)
+	return sydneyTime, nil
+}
+
+// DatesEqual returns true if two dates are equal, false otherwise
+func DatesEqual(date1 time.Time, date2 time.Time) bool {
+	year1, month1, day1 := date1.Date()
+	year2, month2, day2 := date2.Date()
+	if year1 == year2 {
+		if month1 == month2 {
+			if day1 == day2 {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+// IsWeekend returns true if some date falls on a weekend, false otherwise.
+func IsWeekend(date time.Time) bool {
+	weekday := date.Weekday()
+	if weekday == time.Saturday || weekday == time.Sunday {
+		return true
+	}
+	return false
+}
+
 func main() {
 	fmt.Println(Round2dp(2.3333))                                  // 2.33
 	fmt.Println(SliceContains([]interface{}{"a", 2, "c"}, "c"))    // true
@@ -97,4 +133,13 @@ func main() {
 	s := TestStruct{"one ", 2, " three", sql.NullString{"some value", true}}
 	CleanStruct(&s)
 	fmt.Println(s) // {ONE 2 THREE {SOME VALUE true}}
+
+	currentTime, err := GetSydneyTime()
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(currentTime)                          // 2020-12-09 08:31:22.8109344 +1100 AEDT
+	fmt.Println(DatesEqual(currentTime, currentTime)) // true
+	fmt.Println(IsWeekend(currentTime))               // false
 }
