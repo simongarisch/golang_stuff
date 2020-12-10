@@ -116,6 +116,35 @@ func IsWeekend(date time.Time) bool {
 	return false
 }
 
+// GetWorkingDaysUntil returns the number of working days
+// until a particular date.
+func GetWorkingDaysUntil(date time.Time) (int, error) {
+	var days int
+	currentTime, err := GetSydneyTime()
+	if err != nil {
+		return days, err
+	}
+
+	if date.Before(currentTime) {
+		return days, nil
+	}
+	if DatesEqual(date, currentTime) {
+		return days, nil
+	}
+
+	// keep on counting while the day is not a weekend...
+	for {
+		if !IsWeekend(currentTime) {
+			days++
+		}
+		currentTime = currentTime.Add(time.Hour * 24)
+		if DatesEqual(date, currentTime) {
+			break
+		}
+	}
+	return days, nil
+}
+
 func main() {
 	fmt.Println(Round2dp(2.3333))                                  // 2.33
 	fmt.Println(SliceContains([]interface{}{"a", 2, "c"}, "c"))    // true
@@ -142,4 +171,7 @@ func main() {
 	fmt.Println(currentTime)                          // 2020-12-09 08:31:22.8109344 +1100 AEDT
 	fmt.Println(DatesEqual(currentTime, currentTime)) // true
 	fmt.Println(IsWeekend(currentTime))               // false
+
+	currentTime = currentTime.Add(time.Hour * 24 * 7) // 7 days, 5 working days
+	fmt.Println(GetWorkingDaysUntil(currentTime))     // 5
 }
