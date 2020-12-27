@@ -11,6 +11,7 @@ import (
 	"fmt"
 	"math"
 	"reflect"
+	"runtime"
 	"sort"
 	"strings"
 	"time"
@@ -143,6 +144,17 @@ func GetWorkingDaysUntil(date time.Time) (int, error) {
 		}
 	}
 	return days, nil
+}
+
+// Trace provides some function traceback information.
+func Trace() (string, int, string) {
+	pc, file, line, ok := runtime.Caller(1)
+	if !ok {
+		return "?", 0, "?"
+	}
+
+	fn := runtime.FuncForPC(pc)
+	return file, line, fn.Name()
 }
 
 func main() {
