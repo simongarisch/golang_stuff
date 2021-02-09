@@ -157,6 +157,32 @@ func Trace() (string, int, string) {
 	return file, line, fn.Name()
 }
 
+// PrintStringFloatMap displays a map for debugging.
+func PrintStringFloatMap(input map[string]float64) {
+	var keys []string
+	for key := range input {
+		keys = append(keys, key)
+	}
+	sort.Strings(keys)
+
+	for _, key := range keys {
+		value := fmt.Sprintf("%f", input[key])
+		fmt.Println(key + ": " + value)
+	}
+}
+
+// RemoveStringFromSlice takes a slice of strings and removes all
+// instances of a specific value.
+func RemoveStringFromSlice(toRemove string, slice []string) []string {
+	var newSlice []string
+	for _, value := range slice {
+		if value != toRemove {
+			newSlice = append(newSlice, value)
+		}
+	}
+	return newSlice
+}
+
 func main() {
 	fmt.Println(Round2dp(2.3333))                                  // 2.33
 	fmt.Println(SliceContains([]interface{}{"a", 2, "c"}, "c"))    // true
