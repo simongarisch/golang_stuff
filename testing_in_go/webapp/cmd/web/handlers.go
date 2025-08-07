@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"html/template"
 	"log"
+	"log/slog"
 	"net/http"
 	"path"
 )
@@ -11,7 +12,7 @@ import (
 var pathToTemplates = "./templates/"
 
 func (app *application) Home(w http.ResponseWriter, r *http.Request) {
-	app.render(w, r, "home.html", &TemplateData{})
+	app.render(w, r, "home.page.html", &TemplateData{})
 }
 
 type TemplateData struct {
@@ -21,8 +22,16 @@ type TemplateData struct {
 
 func (app *application) render(w http.ResponseWriter, r *http.Request, t string, data *TemplateData) error {
 	// parse the template from disk
-	parsedTemplate, err := template.ParseFiles(path.Join(pathToTemplates, t))
+	slog.Debug("calling application render", "t", t)
+	p1 := path.Join(pathToTemplates, t)
+	p2 := path.Join(pathToTemplates, "base.layout.html")
+
+	// beware, the order matters for parse files
+	// in Go, the order of the provided filenames is significant for determining
+	// the default template of the returned *template.Template object.
+	parsedTemplate, err := template.ParseFiles(p1, p2)
 	if err != nil {
+		slog.Error("error in application render", "err", err)
 		http.Error(w, "bad request", http.StatusBadRequest)
 		return err
 	}
@@ -32,9 +41,11 @@ func (app *application) render(w http.ResponseWriter, r *http.Request, t string,
 	// execute the template, passing it data, if any
 	err = parsedTemplate.Execute(w, data)
 	if err != nil {
+		slog.Error("error in application render, execute template", "t", t, "err", err)
 		return err
 	}
 
+	slog.Debug("application render success", "t", t)
 	return nil
 }
 

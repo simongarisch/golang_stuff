@@ -2,7 +2,9 @@ package main
 
 import (
 	"log"
+	"log/slog"
 	"net/http"
+	"os"
 )
 
 // go get github.com/go-chi/chi/v5
@@ -12,7 +14,18 @@ import (
 
 type application struct{}
 
+func initLog() {
+	handlerOptions := &slog.HandlerOptions{
+		Level: slog.LevelDebug,
+	}
+
+	logger := slog.New(slog.NewTextHandler(os.Stdout, handlerOptions))
+	slog.SetDefault(logger)
+}
+
 func main() {
+	initLog()
+
 	// set up an app config
 	app := application{}
 
@@ -20,7 +33,7 @@ func main() {
 	mux := app.routes()
 
 	// print out a message
-	log.Println("Starting server on port 8080")
+	slog.Info("Starting server on port 8080")
 
 	// start the server
 	err := http.ListenAndServe(":8080", mux)
