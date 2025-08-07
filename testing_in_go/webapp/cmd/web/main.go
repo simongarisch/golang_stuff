@@ -8,6 +8,7 @@ import (
 // go get github.com/go-chi/chi/v5
 // go get github.com/go-chi/chi/v5/middleware
 // go run ./cmd/web
+// go test ./...
 
 type application struct{}
 
