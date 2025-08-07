@@ -5,6 +5,8 @@ import (
 	"log/slog"
 	"net/http"
 	"os"
+
+	"github.com/alexedwards/scs/v2"
 )
 
 // go get github.com/go-chi/chi/v5
@@ -12,11 +14,13 @@ import (
 // go run ./cmd/web
 // go test ./...
 
-type application struct{}
+type application struct {
+	Session *scs.SessionManager
+}
 
 func initLog() {
 	handlerOptions := &slog.HandlerOptions{
-		Level: slog.LevelDebug,
+		Level: slog.LevelInfo,
 	}
 
 	logger := slog.New(slog.NewTextHandler(os.Stdout, handlerOptions))
@@ -28,6 +32,9 @@ func main() {
 
 	// set up an app config
 	app := application{}
+
+	// get a session manager
+	app.Session = getSession()
 
 	// get application routes
 	mux := app.routes()

@@ -7,12 +7,20 @@ import (
 	"log/slog"
 	"net/http"
 	"path"
+	"time"
 )
 
 var pathToTemplates = "./templates/"
 
 func (app *application) Home(w http.ResponseWriter, r *http.Request) {
-	app.render(w, r, "home.page.html", &TemplateData{})
+	td := make(map[string]any)
+	if app.Session.Exists(r.Context(), "test") {
+		msg := app.Session.GetString(r.Context(), "test")
+		td["test"] = msg
+	} else {
+		app.Session.Put(r.Context(), "test", "Hit this page at "+time.Now().UTC().String())
+	}
+	app.render(w, r, "home.page.html", &TemplateData{Data: td})
 }
 
 type TemplateData struct {
