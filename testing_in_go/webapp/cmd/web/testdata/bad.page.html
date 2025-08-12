@@ -22,7 +22,8 @@
                 <!-- end bootstrap form -->
 
                 <hr>
-                <small>Your request came from {{ .IP }}</small>
+                <!-- In this bad template refer to a variable that doesn't exist -->
+                <small>Your request came from {{ $nonExistentVar }}</small>
                 <br>
                 <small>From Session: {{ index .Data "test" }}</small>
             </div>
