@@ -1,0 +1,6 @@
+-- also install beekeeper studio for linux
+-- chmod +x beekeeper.sh
+-- ./beekeeper.sh
+-- docker-compose up -d
+-- docker exec -it ... bash, check data folder location for this container...
+-- psql -U username -d mydatabase -c 'SELECT * FROM mytable'
